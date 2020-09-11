@@ -1,0 +1,53 @@
+#LAB: Console and Cloud Shell
+
+#Objectives
+  -Get access to Google Cloud.
+  -Create a Cloud Storage bucket using the Cloud Console.
+  -Create a Cloud Storage bucket using Cloud Shell.
+  -Become familiar with Cloud Shell features
+
+1.Create a bucket 
+   bucket name:ray123456
+  gsutil mb gs://ray123456
+
+2.Copy uploaded file into a bucket
+  file: test.txt  bucket: ray123456
+
+ gsutil cp test.txt gs://ray123456
+
+3. Create a persistent state
+
+#Create a subdirectory for materials used in this class:
+
+mkdir infraclass
+
+#Create a file called config in the infraclass directory:
+
+touch infraclass/config
+
+#Append the value of your Region environment variable to the config file:
+
+echo INFRACLASS_REGION=$INFRACLASS_REGION >> ~/infraclass/config
+
+#Create a second environment variable for my Project ID
+
+INFRACLASS_PROJECT_ID=[MY_PROJECT_ID]
+
+#Append the value of your Project ID environment variable to the config file:
+
+echo INFRACLASS_PROJECT_ID=$INFRACLASS_PROJECT_ID >> ~/infraclass/config
+
+#Use the source command to set the environment variables, and use the echo command to verify that the project variable was set:
+
+source infraclass/config
+echo $INFRACLASS_PROJECT_ID
+
+#Edit the shell profile with the following command:
+
+nano .profile
+
+#Add the following line to the end of the file:
+
+source infraclass/config
+
+echo $INFRACLASS_PROJECT_ID
